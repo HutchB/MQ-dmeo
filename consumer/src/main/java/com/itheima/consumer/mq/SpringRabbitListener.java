@@ -3,11 +3,26 @@ package com.itheima.consumer.mq;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalTime;
+
 @Component
 public class SpringRabbitListener {
 
     @RabbitListener(queues = "simple.queue")
     public void listenSimpleQueueMessage(String message) {
-        System.out.println("消费者接收到的消息是：" + message);
+        System.out.println("监听到simple.queue的消息：" + message);
+
+    }
+
+    @RabbitListener(queues = "work.queue")
+    public void listenWorkQueueMessag1e(String message) throws InterruptedException {
+        System.out.println("消费者1接收到消息：" + message + "，时间：" + LocalTime.now());
+        Thread.sleep(25);
+    }
+
+    @RabbitListener(queues = "work.queue")
+    public void listenWorkQueueMessage2(String message) throws InterruptedException {
+        System.err.println("消费者2接收到消息：" + message + "，时间：" + LocalTime.now());
+        Thread.sleep(200);
     }
 }

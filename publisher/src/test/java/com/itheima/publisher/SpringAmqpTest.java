@@ -23,4 +23,16 @@ public class SpringAmqpTest {
         rabbitTemplate.convertAndSend(queueName, message);
         System.out.println("发送消息成功：" + message);
     }
+
+    @Test
+    public void testWorkQueue() {
+        // 1.队列名
+        String queueName = "work.queue";
+        // 3.发送消息
+        for (int i = 0; i < 50; i++) {
+            // 2.消息
+            String message = "hello,rabbitmq——" + i;
+            rabbitTemplate.convertAndSend(queueName, message);
+        }
+    }
 }
