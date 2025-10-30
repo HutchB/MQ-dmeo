@@ -44,9 +44,21 @@ public class SpringRabbitListener {
     }
     @RabbitListener(queues = "direct.queue2")
     public void listenDirectQueue2(String message) throws InterruptedException {
-        System.err.println("消费者2监听到direct.queue1消息" + message + "，时间：" + LocalTime.now());
+        System.err.println("消费者2监听到direct.queue2消息" + message + "，时间：" + LocalTime.now());
         Thread.sleep(200);
     }
+
+    @RabbitListener(queues = "topic.queue1")
+    public void listenTopicQueue1(String message) throws InterruptedException {
+        System.err.println("消费者1监听到topic.queue1消息 ：" + message + "，时间：" + LocalTime.now());
+        Thread.sleep(200);
+    }
+    @RabbitListener(queues = "topic.queue2")
+    public void listenTopicQueue2(String message) throws InterruptedException {
+        System.err.println("消费者2监听到topic.queue2消息" + message + "，时间：" + LocalTime.now());
+        Thread.sleep(200);
+    }
+
 
 
 
