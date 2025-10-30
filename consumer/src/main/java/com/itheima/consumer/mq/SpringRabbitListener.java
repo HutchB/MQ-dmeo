@@ -25,4 +25,18 @@ public class SpringRabbitListener {
         System.err.println("消费者2接收到消息：" + message + "，时间：" + LocalTime.now());
         Thread.sleep(200);
     }
+
+    @RabbitListener(queues = "fanout.queue1")
+    public void listenFanoutQueue1(String message) throws InterruptedException {
+        System.err.println("消费者1：" + message + "，时间：" + LocalTime.now());
+        Thread.sleep(200);
+    }
+    @RabbitListener(queues = "fanout.queue2")
+    public void listenFanoutQueue2(String message) throws InterruptedException {
+        System.err.println("消费者2：" + message + "，时间：" + LocalTime.now());
+        Thread.sleep(200);
+    }
+
+
+
 }

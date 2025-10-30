@@ -35,4 +35,14 @@ public class SpringAmqpTest {
             rabbitTemplate.convertAndSend(queueName, message);
         }
     }
+
+    @Test
+    public void testFanoutQueue() {
+        // 1.交换机名
+        String exchange = "hmall.fanout";
+        // 2.消息
+        String message = "hello,everyone";
+        // 3.发送消息
+        rabbitTemplate.convertAndSend(exchange, null, message);
+    }
 }
