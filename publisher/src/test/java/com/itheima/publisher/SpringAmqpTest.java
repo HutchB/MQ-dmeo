@@ -45,4 +45,14 @@ public class SpringAmqpTest {
         // 3.发送消息
         rabbitTemplate.convertAndSend(exchange, null, message);
     }
+
+    @Test
+    public void testDirectQueue() {
+        // 1.交换机名
+        String exchange = "hmall.direct";
+        // 2.消息
+        String message = "hello,everyone";
+        // 3.发送消息
+        rabbitTemplate.convertAndSend(exchange, "yellow", message);
+    }
 }
