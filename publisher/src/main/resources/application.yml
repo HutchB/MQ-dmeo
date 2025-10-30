@@ -1,6 +1,8 @@
 logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
+    level:
+      com.itheima: debug
 server:
   port: 8088
 spring:
@@ -16,6 +18,9 @@ spring:
         enabled: true # 开启超时重试机制
         initial-interval: 1000ms # 失败后的初始等待时间
         multiplier: 1 # 失败后下次的等待时长倍数，下次等待时长 = initial-interval * multiplier
-        max-attempts: 3 # 最大重试次数
+        max-attempts: 3 # 最大重试次
+    publisher-confirm-type: correlated # 开启publisher confirm机制，并设置confirm类型
+    publisher-returns: true # 开启publisher return机制
+
 
 
